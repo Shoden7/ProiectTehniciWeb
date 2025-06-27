@@ -1,0 +1,24 @@
+{
+  "cale_baza": "/resurse/imagini/erori/",
+  "eroare_default": {
+    "titlu": "Eroare necunoscută",
+    "text": "A apărut o eroare neașteptată. Încercăm să remediem.",
+    "imagine": "default.png"
+  },
+  "info_erori": [
+    {
+      "identificator": 404,
+      "status": true,
+      "titlu": "Pagina nu există",
+      "text": "Ne pare rău, pagina căutată nu a fost găsită.",
+      "imagine": "404.png"
+    },
+    {
+      "identificator": 500,
+      "status": true,
+      "titlu": "Eroare server",
+      "text": "A apărut o eroare internă.",
+      "imagine": "500.png"
+    }
+  ]
+}

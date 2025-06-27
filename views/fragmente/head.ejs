@@ -1,0 +1,30 @@
+<head>
+    <title><%= titlu %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="HTML, pescărie, pește, fructe de mare, restaurant pescăresc, mâncare proaspătă, specialități din pește">
+    <meta name="description"
+        content="Descoperă Pescaria 'la Negru – locul perfect pentru iubitorii de pește proaspăt și fructe de mare! O experiență culinară autentică pe malul mării.">
+    <meta name="author" content="Irina Ciocan">
+    <link rel="apple-touch-icon" sizes="180x180" href="/resurse/icoane/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resurse/icoane/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resurse/icoane/favicon-16x16.png">
+    <link rel="manifest" href="/resurse/icoane/site.webmanifest">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="/resurse/stiluri/menu.css">
+    <link rel="stylesheet" href="/resurse/stiluri/style.css">
+
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            const burger = document.querySelector(".burger-icon");
+            const menu = document.querySelector(".menu");
+            burger.addEventListener("click", () => {
+                menu.classList.toggle("open");
+            });
+        });
+    </script>
+</head>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <%- include("../fragmente/head.ejs", { titlu: titlu }) %>
+<body>
+    <%- include("../fragmente/header.ejs") %>
+
+    <main class="layout-responsive">
+        <h1>Eroare 404</h1>
+        <p>Pagina "<%= cale %>" nu există.</p>
+        <a href="/">Înapoi la pagina principală</a>
+    </main>
+
+    <%- include("../fragmente/footer.ejs") %>
+</body>
+</html>

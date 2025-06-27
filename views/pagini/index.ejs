@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <%- include("../fragmente/head.ejs", { titlu: "Pescaria 'la Negru" }) %>
+<body>
+    <%- include("../fragmente/header.ejs") %>
+
+    <main class="layout-responsive">
+        <section class="zona1" id="Sectiune1">
+        <div class="icon-box">
+          <h2>Despre noi</h2>
+          <div class="icon-box">
+            <p>La <i class="fas fa-fish"></i><b> Pescaria 'la Negru</b>, transformăm fiecare masă într-o
+              <em>călătorie gastronomică unică</em>.</p>
+          </div>
+          <details>
+            <summary>Care sunt specialitățile casei?</summary>
+            <p>Oferim preparate precum saramură de crap, hamsii crocante și midii în sos de vin alb.</p>
+          </details>
+          <details>
+            <summary>Oferiți livrare la domiciliu?</summary>
+            <p>Da, oferim livrare în Mangalia și zonele învecinate.</p>
+          </details>
+          <details>
+            <summary>Care sunt orele de funcționare?</summary>
+            <p>Suntem deschiși zilnic între orele 10:00 și 22:00.</p>
+          </details>
+      </section>
+
+      <section class="zona2" id="Tabel">
+        <div class="stilizare-tabel">
+          <table class="tabel-produse">
+            <caption>Top 5 produse vândute în luna mai</caption>
+            <thead>
+              <tr>
+                <th>Nr.</th>
+                <th>Produs</th>
+                <th>Cantitate</th>
+                <th>Categoria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Saramură de crap</td>
+                <td rowspan="2">145 porții</td>
+                <td>Pește</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Hamsii crocante</td>
+                <td>Fructe de mare</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Midii în sos alb</td>
+                <td>90 porții</td>
+                <td>Fructe de mare</td>
+              </tr>
+              <tr>
+                <td colspan="2">Total pește</td>
+                <td>210 porții</td>
+                <td>Pește</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">Date valabile pentru luna mai 2025. Ultima actualizare: 1 iunie 2025.</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <aside class="zona3">
+        <div class="icon-box">
+          <i class="fas fa-spinner fa-spin"></i> Evenimente:
+        </div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </aside>
+
+      <aside class="zona4">Anunțuri: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</aside>
+
+      <aside class="zona5">Utilizatori online: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</aside>
+
+      <section class="zona6">Statistici utilizator: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</section>
+
+      <section class="zona7">Date server: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</section>
+
+      <section class="zona8">
+        <h3>Conținut suplimentar – Oferta noastră</h3>
+        <section id="Subsectiune1">
+          <h4>Oferta noastră</h4>
+          <p>Meniul nostru este o adevărată sărbătoare a gusturilor marine! De la preparate clasice precum
+            <i>saramura de crap</i> și <i>hamsii crocante</i>, la delicii rafinate precum <i>carpaccio de
+              ton</i> și <i>midii în sos de vin alb</i>, avem ceva pentru fiecare iubitor de pește.
+          </p>
+        </section>
+        <section id="Subsectiune2">
+          <h4>Prospețime garantată</h4>
+          <p><strong>Ne aprovizionăm zilnic</strong> direct de la pescarii locali, pentru a garanta prospețimea
+            fiecărui preparat. <strong>Nu servim pește congelat</strong>.</p>
+        </section>
+        <figure>
+          <picture>
+            <source srcset="/resurse/imagini/pescarie-mic.jpg" media="(max-width: 600px)">
+            <source srcset="/resurse/imagini/pescarie-mediu.jpg" media="(max-width: 1024px)">
+            <img src="/resurse/imagini/pescarie-mare.jpg" alt="Imagine cu Pescaria 'la Negru">
+          </picture>
+          <figcaption>Pescaria 'la Negru – preparate savuroase din <b>pește</b> și <b>fructe de mare</b>.</figcaption>
+        </figure>
+
+        <section id="Sectiune2">
+          <h4>Contact</h4>
+          <p>Vrei să te bucuri de o experiență culinară autentică?</p>
+          <p><strong>Adresă:</strong> Str. Pescărușului, nr. 10, Mangalia</p>
+          <p><strong>Telefon:</strong> <b>0723 456 789</b></p>
+          <p><a href="/resurse/Meniu.pdf" download>Descarcă meniul nostru</a></p>
+        </section>
+
+        <h4>Videoclipuri recomandate</h4>
+        <div class="container-iframe">
+          <div class="stilizare-taburi">
+            <a href="https://www.youtube.com/embed/dQw4w9WgXcQ" target="ifr-video">Preparare saramură</a>
+            <a href="https://www.youtube.com/embed/3JZ_D3gLwOQ" target="ifr-video">Hamsii crocante</a>
+          </div>
+          <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        </div>
+      </section>
+    </main>
+
+    <%- include("../fragmente/footer.ejs") %>
+</body>
+</html>

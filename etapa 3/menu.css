@@ -1,0 +1,441 @@
+nav.main-nav {
+  background: #51B8E0;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  position: relative;
+}
+nav.main-nav .burger-icon {
+  display: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+}
+nav.main-nav ul.menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+nav.main-nav ul.menu li {
+  position: relative;
+}
+nav.main-nav ul.menu li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  position: relative;
+}
+nav.main-nav ul.menu li a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100%;
+  height: 100%;
+  background: #53E0DC;
+  border-radius: 5px;
+  z-index: -1;
+  transition: transform 0.4s ease;
+}
+nav.main-nav ul.menu li a:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+nav.main-nav ul.menu li.has-submenu:hover .submenu {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+nav.main-nav ul.menu li .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #538CE0;
+  list-style: none;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  transform: scale(0);
+  transform-origin: top left;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+nav.main-nav ul.menu li .submenu li a {
+  padding: 0.5rem 1rem;
+  display: block;
+  color: #fff;
+  transition: 0.3s;
+}
+nav.main-nav ul.menu li .submenu li a:hover {
+  background: #53E0DC;
+  color: black;
+  text-shadow: 0 1px 2px black;
+}
+@media (max-width: 768px) {
+  nav.main-nav .burger-icon {
+    display: block;
+  }
+  nav.main-nav ul.menu {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #51B8E0;
+    display: none;
+  }
+  nav.main-nav ul.menu.open {
+    display: flex;
+  }
+  nav.main-nav ul.menu li {
+    text-align: center;
+  }
+  nav.main-nav ul.menu li.home span {
+    display: none;
+  }
+  nav.main-nav ul.menu li.home i {
+    display: inline-block;
+  }
+  nav.main-nav ul.menu li .submenu {
+    transform: scale(0);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  nav.main-nav ul.menu li:hover .submenu {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media (max-width: 480px) {
+  nav.main-nav ul.menu li a {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-nav {
+    position: relative;
+    z-index: 10;
+  }
+  .main-nav .burger-icon {
+    display: block;
+  }
+  .main-nav .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #51B8E0;
+    z-index: 999;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .main-nav .menu.open {
+    display: flex;
+  }
+  .main-nav .menu .home span {
+    display: none;
+  }
+  .main-nav .menu .has-submenu .submenu {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform 0.3s ease, opacity 0.3s ease, -webkit-clip-path 0.4s ease;
+    transition: clip-path 0.4s ease, transform 0.3s ease, opacity 0.3s ease;
+    transition: clip-path 0.4s ease, transform 0.3s ease, opacity 0.3s ease, -webkit-clip-path 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    background: #538CE0;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+  }
+  .main-nav .menu .has-submenu:hover .submenu {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media screen and (max-width: 600px) {
+  .main-nav {
+    position: relative;
+    z-index: 10;
+  }
+  .main-nav .burger-icon {
+    display: block;
+  }
+  .main-nav .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #51B8E0;
+    z-index: 999;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .main-nav .menu.open {
+    display: flex;
+  }
+  .main-nav .menu .home span {
+    display: none;
+  }
+  .main-nav .menu .has-submenu .submenu {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform 0.3s ease, opacity 0.3s ease, -webkit-clip-path 0.4s ease;
+    transition: clip-path 0.4s ease, transform 0.3s ease, opacity 0.3s ease;
+    transition: clip-path 0.4s ease, transform 0.3s ease, opacity 0.3s ease, -webkit-clip-path 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .main-nav .menu .has-submenu:hover .submenu {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media print {
+  img, video, iframe, figure, figcaption, .media, .to-top-link {
+    display: none !important;
+  }
+  .grid, .grid > * {
+    display: block !important;
+  }
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+  h1 {
+    text-align: center;
+    page-break-before: always;
+  }
+  nav ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  nav ul li {
+    display: block;
+    margin: 0.5em 0;
+  }
+  nav ul ul {
+    margin-left: 1em;
+  }
+  nav {
+    page-break-after: always;
+  }
+  footer {
+    page-break-before: always;
+  }
+  footer p.banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: double 3px black;
+    width: 50%;
+    padding: 0.5em;
+  }
+  body::after {
+    content: "ZahariucnStefan";
+    position: fixed;
+    top: 45%;
+    left: 20%;
+    width: 60%;
+    height: 10%;
+    text-align: center;
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    white-space: pre-line;
+  }
+  @page :left {
+    margin-left: 2cm;
+    margin-right: 1cm;
+  }
+  @page :right {
+    margin-left: 1cm;
+    margin-right: 2cm;
+  }
+}
+.main-nav {
+  background: #222;
+  font-family: "Poppins", sans-serif;
+  padding: 0.5rem 2rem;
+}
+.main-nav .menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+.main-nav .menu li {
+  position: relative;
+}
+.main-nav .menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  position: relative;
+  display: inline-block;
+  transition: all 0.4s ease-in-out;
+}
+.main-nav .menu li a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: #444;
+  transform: scale(0) translate(-50%, -50%);
+  transform-origin: center;
+  z-index: -1;
+  opacity: 0.2;
+  transition: transform 0.4s ease;
+}
+.main-nav .menu li a:hover::after {
+  transform: scale(1) translate(-50%, -50%);
+}
+.main-nav .menu li.has-submenu:hover > .submenu {
+  transform: scale(1);
+  opacity: 1;
+}
+.main-nav .menu li .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #444;
+  list-style: none;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  z-index: 10;
+  transform-origin: top left;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.main-nav .menu li .submenu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+}
+.main-nav .menu li .submenu li a:hover {
+  background: #51B8E0;
+  color: black;
+  text-shadow: 0 0 3px white;
+}
+.main-nav .burger-icon {
+  display: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+/*@media (max-width: 1024px) {
+  .main-nav {
+    padding: 0.5rem;
+
+    .burger-icon {
+      display: none;
+    }
+
+    .menu {
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      gap: 1rem;
+
+      .home a span {
+        display: none;
+      }
+
+      li {
+        position: relative;
+        display: inline-block;
+
+        a {
+          display: inline-block;
+        }
+
+        .submenu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: $color-hover;
+          padding: 0.5rem 0;
+          min-width: 180px;
+          z-index: 10;
+          display: none;
+        }
+
+        &.has-submenu:hover > .submenu {
+          display: block;
+          @include show-submenu;
+        }
+      }
+    }
+  }
+}
+*/
+@media (max-width: 768px) {
+  .main-nav .burger-icon {
+    display: block;
+  }
+  .main-nav .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #222;
+  }
+  .main-nav .menu.open {
+    display: flex;
+  }
+  .main-nav .menu li a::after {
+    display: none;
+  }
+  .main-nav .menu li .submenu {
+    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+    background: #444;
+    padding: 0.5rem;
+    transform-origin: top left;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  .main-nav .menu li .submenu li a:hover {
+    background: #51B8E0;
+    color: black;
+    text-shadow: 0 0 3px white;
+  }
+  .main-nav .menu li.has-submenu:hover > .submenu {
+    transform: scale(1);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=menu.css.map */

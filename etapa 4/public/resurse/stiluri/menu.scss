@@ -1,0 +1,558 @@
+// === VARIABILE ===
+$main-color: #51B8E0;
+$hover-color: #538CE0;
+$accent-color: #53E0DC;
+$text-light: #fff;
+$nav-height: 60px;
+$break-md: 768px;
+$break-sm: 480px;
+
+// === MIXIN ===
+@mixin button-hover($bg, $color) {
+    background: $bg;
+    color: $color;
+    text-shadow: 0 1px 2px black;
+}
+
+nav.main-nav {
+    background: $main-color;
+    height: $nav-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    position: relative;
+
+    .burger-icon {
+        display: none;
+        font-size: 1.8rem;
+        color: $text-light;
+        cursor: pointer;
+    }
+
+    ul.menu {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+
+        li {
+            position: relative;
+
+            a {
+                color: $text-light;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                display: inline-block;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    width: 100%;
+                    height: 100%;
+                    background: $accent-color;
+                    border-radius: 5px;
+                    z-index: -1;
+                    transition: transform 0.4s ease;
+                }
+
+                &:hover::before {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+
+            // Submeniu
+            &.has-submenu:hover .submenu {
+                transform: scale(1);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .submenu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: $hover-color;
+                list-style: none;
+                border-radius: 8px;
+                padding: 0.5rem 0;
+                transform: scale(0);
+                transform-origin: top left;
+                opacity: 0;
+                visibility: hidden;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+
+                li a {
+                    padding: 0.5rem 1rem;
+                    display: block;
+                    color: $text-light;
+                    transition: 0.3s;
+
+                    &:hover {
+                        @include button-hover($accent-color, black);
+                    }
+                }
+            }
+        }
+    }
+
+    // Responsive
+    @media (max-width: $break-md) {
+        .burger-icon {
+            display: block;
+        }
+
+        ul.menu {
+            flex-direction: column;
+            position: absolute;
+            top: $nav-height;
+            left: 0;
+            right: 0;
+            background: $main-color;
+            display: none;
+
+            &.open {
+                display: flex;
+            }
+
+            li {
+                text-align: center;
+
+                &.home span {
+                    display: none;
+                }
+
+                &.home i {
+                    display: inline-block;
+                }
+
+                .submenu {
+                    transform: scale(0);
+                    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                &:hover .submenu {
+                    transform: scale(1);
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $break-sm) {
+        ul.menu li a {
+            font-size: 0.85rem;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .main-nav {
+        position: relative;
+        z-index: 10;
+
+        .burger-icon {
+            display: block;
+        }
+
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: $nav-height;
+            left: 0;
+            right: 0;
+            background: $main-color;
+            z-index: 999;
+            max-height: 60vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+            &.open {
+                display: flex;
+            }
+
+            .home span {
+                display: none;
+            }
+
+            .has-submenu .submenu {
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+                transform: scale(0);
+                transform-origin: top left;
+                transition: clip-path 0.4s ease, transform 0.3s ease, opacity 0.3s ease;
+                opacity: 0;
+                visibility: hidden;
+                display: none;
+                position: absolute;
+                background: $hover-color;
+                z-index: 1000;
+                top: 100%;
+                left: 0;
+            }
+
+            .has-submenu:hover .submenu {
+                display: block;
+                transform: scale(1);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main-nav {
+        position: relative; // nu mai e fixat, ca să nu blocheze pagina
+        z-index: 10;
+
+        .burger-icon {
+            display: block;
+        }
+
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: $nav-height;
+            left: 0;
+            right: 0;
+            background: $main-color;
+            z-index: 999;
+            max-height: 60vh; // max height controlabil
+            overflow-y: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+            &.open {
+                display: flex;
+            }
+
+            .home span {
+                display: none;
+            }
+
+            .has-submenu .submenu {
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+                transform: scale(0);
+                transform-origin: top left;
+                transition: clip-path 0.4s ease, transform 0.3s ease, opacity 0.3s ease;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .has-submenu:hover .submenu {
+                transform: scale(1);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+@media print {
+  // Ascundere media
+  img, video, iframe, figure, figcaption, .media, .to-top-link {
+    display: none !important;
+  }
+
+  // Grid devine block
+  .grid, .grid > * {
+    display: block !important;
+  }
+
+  // Linkuri fără culoare sau subliniere
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  // Heading de nivel 1 centrat
+  h1 {
+    text-align: center;
+    page-break-before: always;
+  }
+
+  // Meniu ca listă neordonată verticală
+  nav ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 0.5em 0;
+  }
+
+  nav ul ul {
+    margin-left: 1em;
+  }
+
+  // Page break după meniu și înainte de footer
+  nav {
+    page-break-after: always;
+  }
+
+  footer {
+    page-break-before: always;
+  }
+
+  // Banner în colț dreapta-sus
+  footer p.banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: double 3px black;
+    width: 50%;
+    padding: 0.5em;
+  }
+
+  // Watermark pe fiecare pagină
+  body::after {
+    content: "Zahariuc\nStefan";
+    position: fixed;
+    top: 45%;
+    left: 20%;
+    width: 60%;
+    height: 10%;
+    text-align: center;
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    white-space: pre-line;
+  }
+
+  // Margini diferite pentru pagini opuse
+  @page :left {
+    margin-left: 2cm;
+    margin-right: 1cm;
+  }
+
+  @page :right {
+    margin-left: 1cm;
+    margin-right: 2cm;
+  }
+}
+
+// SASS STRUCTURE FOR RESPONSIVE DROPDOWN MENU
+
+// ================= Variables ===================
+$color-bg: #222;
+$color-hover: #444;
+$color-accent: #51B8E0;
+$color-text: white;
+$font-main: 'Poppins', sans-serif;
+$transition-time: 0.4s;
+$submenu-scale: 0;
+
+// ================= Mixins ======================
+@mixin centered-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition-fast {
+  transition: all $transition-time ease-in-out;
+}
+
+@mixin submenu-transition {
+  transform-origin: top left;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform $transition-time ease, opacity $transition-time ease;
+}
+
+@mixin show-submenu {
+  transform: scale(1);
+  opacity: 1;
+}
+
+// ============== Base Navigation ===============
+.main-nav {
+  background: $color-bg;
+  font-family: $font-main;
+  padding: 0.5rem 2rem;
+
+  .menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+
+      a {
+        color: $color-text;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        position: relative;
+        display: inline-block;
+        @include transition-fast;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          background: $color-hover;
+          transform: scale(0) translate(-50%, -50%);
+          transform-origin: center;
+          z-index: -1;
+          opacity: 0.2;
+          transition: transform $transition-time ease;
+        }
+
+        &:hover::after {
+          transform: scale(1) translate(-50%, -50%);
+        }
+      }
+
+      &.has-submenu:hover > .submenu {
+        @include show-submenu;
+      }
+
+      .submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: $color-hover;
+        list-style: none;
+        padding: 0.5rem 0;
+        min-width: 180px;
+        z-index: 10;
+        @include submenu-transition;
+
+        li {
+          a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: $color-text;
+            text-decoration: none;
+            @include transition-fast;
+
+            &:hover {
+              background: $color-accent;
+              color: black;
+              text-shadow: 0 0 3px white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .burger-icon {
+    display: none;
+    font-size: 1.5rem;
+    color: $color-text;
+    cursor: pointer;
+  }
+}
+
+// ============== Responsive ====================
+/*@media (max-width: 1024px) {
+  .main-nav {
+    padding: 0.5rem;
+
+    .burger-icon {
+      display: none;
+    }
+
+    .menu {
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      gap: 1rem;
+
+      .home a span {
+        display: none;
+      }
+
+      li {
+        position: relative;
+        display: inline-block;
+
+        a {
+          display: inline-block;
+        }
+
+        .submenu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: $color-hover;
+          padding: 0.5rem 0;
+          min-width: 180px;
+          z-index: 10;
+          display: none;
+        }
+
+        &.has-submenu:hover > .submenu {
+          display: block;
+          @include show-submenu;
+        }
+      }
+    }
+  }
+}
+*/
+@media (max-width: 768px) {
+  .main-nav {
+    .burger-icon {
+      display: block;
+    }
+
+    .menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: $color-bg;
+
+      &.open {
+        display: flex;
+      }
+
+      li {
+        a {
+          &::after {
+            display: none;
+          }
+        }
+
+        .submenu {
+          clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+          background: $color-hover;
+          padding: 0.5rem;
+          @include submenu-transition;
+
+          li a {
+            &:hover {
+              background: $color-accent;
+              color: black;
+              text-shadow: 0 0 3px white;
+            }
+          }
+        }
+
+        &.has-submenu:hover > .submenu {
+          @include show-submenu;
+        }
+      }
+    }
+  }
+}
